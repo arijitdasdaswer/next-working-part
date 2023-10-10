@@ -1,0 +1,320 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Client specified colours 
+#0b6623 
+#9dc183
+#d1e3b1
+#383e48
+#a0a8b2
+#f4f5f7
+*/
+
+/* highest level of element - <html> */
+:root {
+  --pickle-green: 11, 102, 35;
+  --creamy-green: 157, 193, 131;
+  --light-green: 209, 227, 177;
+  --navy-black: 56, 62, 72;
+  --creamy-grey: 160, 168, 178;
+  --light-white: 244, 245, 247;
+  --custom-red: 199, 30, 52;
+}
+
+/*the default colour of content*/
+body {
+  font-family: 'Arimo', sans-serif;
+  color: rgb(var(--navy-black));
+  background: linear-gradient(to bottom, rgb(var(--light-white)), rgb(var(--creamy-grey)));
+  min-height: 100vh;
+}
+
+/* Redefined the basici colours for detailed css manipulations */
+.pickle-green-text {
+  color: rgb(var(--pickle-green));
+}
+
+.creamy-green-text {
+  color: rgb(var(--creamy-green));
+}
+
+.light-green-text {
+  color: rgb(var(--light-green));
+}
+
+.navy-black-text {
+  color: rgb(var(--navy-black));
+}
+
+.creamy-grey-text {
+  color: rgb(var(--creamy-grey));
+}
+
+.light-white-text {
+  color: rgb(var(--light-white));
+}
+
+.custom-red-text {
+  color: rgb(var(--custom-red));
+}
+
+/* Element colours */
+.pickle-green-bg {
+  background: rgb(var(--pickle-green));
+}
+
+.creamy-green-bg {
+  background: rgb(var(--creamy-green));
+}
+
+.light-green-bg {
+  background: rgb(var(--light-green));
+}
+
+.navy-black-bg {
+  background: rgb(var(--navy-black));
+}
+
+.creamy-grey-bg {
+  background: rgb(var(--creamy-grey));
+}
+
+.light-white-bg {
+  background: rgb(var(--light-white));
+}
+
+/*Header styles*/
+.header-border-colour{
+  border-color:rgb(var(--navy-black));
+}
+.home-navi-button{
+  background: linear-gradient(10deg, rgb(var(--navy-black)) 15%, rgb(var(--light-white)));
+}
+
+
+/*Style of the slider menu*/
+.slider-menu {
+  transition: height 0.4s ease-in-out;
+  background-color: rgb(var(--light-white));
+  /* Set your desired background color */
+}
+
+/*Style of the content holder*/
+.paper-bg {
+  background: radial-gradient(ellipse, rgb(var(--creamy-green)), rgb(var(--light-green)));
+  border-radius: "20px";
+}
+
+/*border division between contents*/
+.content-divider {
+  width: 200px;
+  height: 200px;
+  border: 2px solid transparent;
+}
+
+/*border division between menu items*/
+.fading-border {
+  width: max-content;
+  position: relative;
+  padding: 2vh
+}
+
+.fading-border::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 900%;
+  height: 3px;
+  background-image: linear-gradient(to right,
+      transparent,
+      rgb(var(--navy-black)),
+      transparent);
+}
+
+.scrollable-list {
+  max-height: calc(100vh - var(--footer-height));
+  overflow-y: auto;
+}
+
+/* Search input box style */
+.search-border-colour {
+  border-radius: 0.375rem;
+  border-width: 4px;
+  border-style: solid;
+  border-color: rgb(var(--pickle-green));
+  outline: none;
+}
+
+/* reminder bouncing svg style for unselected homecouncil */
+@keyframes bounce {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(5px);
+    /* Adjust the distance for the bounce effect */
+  }
+}
+
+.animate-bounce-horizontal {
+  animation: bounce 1.5s infinite;
+}
+
+/* navigation animations*/
+.navigationButton {
+  cursor: pointer;
+  outline: 0;
+}
+
+.navigationButton:active {
+  transform: scale(1.2);
+}
+
+.glow:active {
+  background-color: transparent;
+  animation: glow-animation 1s ease-in-out infinite alternate;
+}
+
+@keyframes glow-animation {
+  from {
+    box-shadow: 0 0 10px rgb(var(--light-white));
+  }
+
+  to {
+    box-shadow: 0 0 20px rgb(var(--light-white));
+  }
+}
+
+navigation-text:active {
+  color: rgb(var(--light-white));
+}
+
+/* bg style of each bin */
+.bin-display {
+  background: radial-gradient(ellipse at top, rgb(var(--creamy-green)), transparent), radial-gradient(ellipse at bottom, rgb(var(--creamy-grey)), transparent);
+  border-radius: "20px";
+}
+
+/* styles of the bins detailed rules */
+.checkmark {
+  color: rgb(var(--pickle-green));
+}
+
+.crossmark {
+  color: rgb(var(--custom-red));
+  font-weight: bold;
+}
+
+.unclickedList {
+  border-color: rgb(var(--navy-black));
+  background-color: rgb(var(--light-green));
+}
+
+.clickedList {
+  border-color: rgb(var(--navy-black));
+  background-color: rgb(var(--light-white));
+}
+
+.rule-scroll {
+  scrollbar-width: 1px;
+}
+
+/*item look up style*/
+.interface-display {
+  background: linear-gradient(rgb(var(--creamy-green)) 10%, 40%, rgb(var(--light-white)) 90%);
+  border-radius: "20px";
+}
+.grey-search-border{
+  border-radius: 0.375rem;
+  border-width: 4px;
+  border-style: solid;
+  border-color: rgb(var(--creamy-grey));
+  outline: none;
+}
+.black-search-border{
+  border-radius: 0.375rem;
+  border-width: 4px;
+  border-style: solid;
+  border-color: rgb(var(--navy-black));
+  outline: none;
+}
+
+/*styles of the item detailed component  background: (135deg, rgb(var(--light-green)) 60%, rgb(var(--creamy-grey)));*/
+.item-display {
+  background: linear-gradient(10deg, rgb(var(--creamy-grey)) 15%, rgb(var(--light-white)));
+}
+
+.drop-off-separater {
+  position: relative;
+  padding: 1vh
+}
+.drop-off-separater::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 90%;
+  height: 3px;
+  background-image: linear-gradient(to right,
+      transparent,
+      rgb(var(--pickle-green)),
+      transparent);
+}
+.item-marker {
+  display: inline-block;
+  width: 6px;
+  /* Adjust the width of the custom marker */
+  height: 6px;
+  /* Adjust the height of the custom marker */
+  background-color: (var(--pickle-green));
+  /* Customize the marker color */
+  border-radius: 50%;
+  /* Create a circular marker */
+}
+
+/* used to hide scrollbars */
+.hide-scroll::-webkit-scrollbar {
+  width: 1px;
+  -ms-overflow-style: none;  /* for Internet Explorer and Edge */
+  scrollbar-width: none; /* for Firefox */
+}
+
+.hide-scroll::-webkit-scrollbar-thumb {
+  display: none; /* for Chrome, Safari, and Opera */
+  background-color: transparent;
+  /* not visible to be more appealing */
+  border-radius: 10px;
+}
+
+/* header style */
+.header-font {
+  font-family: garamond;
+  font-style: italic;
+}
+
+/* explore page styles*/
+.councilSearchButton{
+  background: linear-gradient(10deg, rgb(var(--creamy-grey)) 15%, rgb(var(--light-white)));
+}
+
+/* Scan input box style */
+.scan-border-colour {
+  border-radius: 0.375rem;
+  border-width: 2px;
+  border-style: double;
+  border-color: rgb(var(--pickle-green));
+  outline: none;
+}
+
+.logo {
+  transform: scale(0.5);
+  backface-visibility: hidden;
+  @media screen and (min-width: 768px) {
+    transform: scale(0.5);
+  }
+}

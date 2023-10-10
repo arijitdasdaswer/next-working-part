@@ -1,0 +1,91 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Council {
+  id      Int      @id @default(autoincrement())
+  name    String
+  bins    Bin[]
+  methods Method[]
+  suburbs Suburb[]
+  users   User[]
+}
+
+model Suburb {
+  postcode  String
+  name      String
+  councilId Int
+  id        Int     @id @default(autoincrement())
+  council   Council @relation(fields: [councilId], references: [id])
+}
+
+model User {
+  id           Int      @id @default(autoincrement())
+  name         String
+  userName     String
+  userPassword String
+  councilId    Int?
+  roleId       Int?
+  council      Council? @relation(fields: [councilId], references: [id])
+  role         Role?    @relation(fields: [roleId], references: [id])
+}
+
+model Role {
+  id    Int    @id @default(autoincrement())
+  role  String
+  users User[]
+}
+
+model Bin {
+  id        Int      @id @default(autoincrement())
+  colorCode String
+  type      String
+  image     String?
+  can       String
+  cannot    String
+  councilId Int
+  council   Council  @relation(fields: [councilId], references: [id])
+  methods   Method[]
+}
+
+model Method {
+  id        Int     @id @default(autoincrement())
+  councilId Int
+  itemId    Int
+  method    String?
+  binId     Int?
+  note      String?
+  bin       Bin?    @relation(fields: [binId], references: [id])
+  council   Council @relation(fields: [councilId], references: [id])
+  item      Item    @relation(fields: [itemId], references: [id])
+}
+
+model Item {
+  id            Int          @id @default(autoincrement())
+  name          String       @unique
+  subCategoryId Int?
+  code          String?      @unique
+  subCategory   SubCategory? @relation(fields: [subCategoryId], references: [id])
+  methods       Method[]
+}
+
+model SubCategory {
+  id                Int             @id @default(autoincrement())
+  name              String
+  primaryMaterialId Int
+  code              String?         @unique
+  items             Item[]
+  PrimaryMaterial   PrimaryMaterial @relation(fields: [primaryMaterialId], references: [id])
+}
+
+model PrimaryMaterial {
+  id            Int           @id @default(autoincrement())
+  name          String
+  code          String?       @unique
+  subCategories SubCategory[]
+}
